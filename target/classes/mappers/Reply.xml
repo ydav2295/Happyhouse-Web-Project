@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.happyhouse.model.dao.ReplyDAO">
+
+	<select id="selectReplyBoardByQnANo" parameterType="int" resultType="ReplyBoard">
+		select 
+			reply_no as replyNo, 
+			qna_no as qnaNo, 
+			reply_title as replyTitle,
+			reply_content as replyContent, 
+			reply_datetime as replyDatetime, 
+			reply_userid as replyUserid
+		  from reply_board
+		  where qna_no = #{qnaNo}
+		  order by qna_no desc
+	</select>
+	
+	<select id="selectReplyBoardByReplyNo" parameterType="int" resultType="ReplyBoard">
+		select 
+			reply_no as replyNo, 
+			qna_no as qnaNo, 
+			reply_title as replyTitle,
+			reply_content as replyContent, 
+			reply_datetime as replyDatetime, 
+			reply_userid as replyUserid
+		  from reply_board
+		  where reply_no = #{replyNo}
+		  order by qna_no desc
+	</select>
+	
+	
+	
+	
+	<insert id="insertReplyBoard" parameterType="replyBoard">
+		insert into reply_board(
+			qna_no, 
+			reply_title,
+			reply_content,
+			reply_userid
+		) values (
+			#{qnaNo}, 
+			#{replyTitle},
+			#{replyContent},
+			#{replyUserid}
+		)
+	</insert>
+	
+	<update id="updateReplyBoard" parameterType="replyBoard">
+		update reply_board 
+		   set 
+		   		reply_content = #{replyContent},
+		   		reply_title = #{replyTitle}
+		 where reply_no = #{replyNo}
+	</update>
+	
+	<delete id="deleteReplyBoard" parameterType="int">
+		delete 
+		  from reply_board 
+		 where reply_no = #{replyNo}
+	</delete>
+	
+</mapper>
+

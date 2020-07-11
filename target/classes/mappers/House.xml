@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mappers/gueset.xml -->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.happyhouse.model.dao.HouseDAO"> <!-- mybatis는 namespace필수!! -->
+ 	<select id="searchAll" parameterType="housepagebean" resultType="housedeal">
+   		select * 
+   			from housedeal 
+   		  where 1=1
+   		  	<if test="dong != null">
+   				and dong like CONCAT('%',#{dong},'%') 
+   		  	</if>
+   		  	<if test="aptname != null">
+   				and AptName like CONCAT('%',#{aptname},'%') 
+   		  	</if>
+   		  <if test="sortType != null">
+   		  <choose>
+   		  	<when test='sortType.equals("lowPrice")'>
+   				order by dealAmount asc
+   		  	</when>
+   		  	<when test='sortType.equals("highPrice")'>
+   				order by dealAmount desc
+   		  	</when>
+   		  </choose>
+   		  </if>
+   			
+   </select>
+   
+   <select id="search" parameterType="int" resultType="HouseDeal">
+   		select * 
+   			from housedeal 
+   		  where no = #{no} 
+   		  order by no desc
+   </select>
+   <select id="searchByName" parameterType="houseDeal" resultType="HouseDeal">
+   		  select * 
+   			from housedeal 
+   		  where 1 = 1
+          and AptName = #{aptName}
+   		  and jibun = #{jibun}
+   		  <if test="dong != null">
+   				and dong like CONCAT('%',#{dong},'%') 
+   		  	</if>
+   		  order by no desc
+   </select>
+   
+   <select id="searchNotice" resultType="Notice">
+   		select * 
+   			from notice 
+   		  where 1=1
+   		  order by noticeno desc
+   </select>
+   
+   <select id="searchNoticeByNo" parameterType="int" resultType="Notice">
+   		select * 
+   			from notice 
+   		where noticeno = #{no}
+   		order by noticeno desc
+   </select>
+   
+   
+   
+   <select id="getSize" parameterType="housepagebean" resultType="int">
+   		select count(*) as size 
+   			from housedeal 
+   		  where 1=1
+   		  <choose>
+   		  	<when test="dong != null">
+   				and dong like CONCAT('%',#{dong},'%')
+   		  	</when>
+   		  	<when test="aptname != null">
+   				and AptName like CONCAT('%',#{aptname},'%')
+   		  	</when>
+   		  </choose>
+   </select>
+   <select id="HouseDAOImpl" resultType="int">
+   		select count(*) as size 
+   			from housedeal
+   </select>
+   
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	 <select id="searchNoticeBean" parameterType="NoticeBean" resultType="Notice">
+         select *
+            from notice
+         where 1=1
+            <choose>
+              <when test="subject != null">
+               and subject like CONCAT('%',#{subject},'%') 
+              </when>
+              <when test="content != null">
+               and content like CONCAT('%',#{content},'%') 
+              </when>
+           </choose>
+   </select>
+   
+   <insert id="insertNotice" parameterType="Notice">
+         insert into notice (adminid, subject, content) 
+         values (#{adminid}, #{subject}, #{content})
+   </insert>
+   
+   <delete id="deleteNotice" parameterType="int">
+         delete 
+         from notice
+         where noticeno = #{no}
+   </delete>
+   
+   <update id="updateNotice" parameterType="Notice">
+         update notice
+         set subject = #{subject}, content = #{content} 
+         where noticeno = #{noticeno}
+   </update>
+	
+</mapper>    
+    
+    
+    
+    
+    
+    

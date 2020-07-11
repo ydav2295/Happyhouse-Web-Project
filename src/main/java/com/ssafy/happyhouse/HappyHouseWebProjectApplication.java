@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HappyHouseWebFrontGumi3banNoWooHyunJiMinWooApplication {
+public class HappyHouseWebProjectApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(HappyHouseWebFrontGumi3banNoWooHyunJiMinWooApplication.class, args);
+		SpringApplication.run(HappyHouseWebProjectApplication.class, args);
 	}
 
 }

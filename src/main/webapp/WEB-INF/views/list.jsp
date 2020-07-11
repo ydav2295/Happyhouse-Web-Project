@@ -191,42 +191,42 @@
 		</ul>
 
 
-		<c:if test="${not empty cmp1}">
+		<c:if test="${not empty source}">
 
 			<div class="card my-4">
 				<h3 align="center" class="card-header">비교하기</h3>
 				<div class="card-body outer">
 					<div class="left">
 						<div>
-							<h5>${cmp1.aptName}</h5>
+							<h5>${source.aptName}</h5>
 							<br>
 							<table class="table">
 								<tr>
 									<th>법정동</th>
-									<td>${cmp1.dong}</td>
+									<td>${source.dong}</td>
 								</tr>
 								<tr>
 									<th>거래 금액</th>
-									<td>${cmp1.dealAmount}만원</td>
+									<td>${source.dealAmount}만원</td>
 								</tr>
 								<tr>
 									<th>건축 년도</th>
-									<td>${cmp1.buildYear}</td>
+									<td>${source.buildYear}</td>
 								</tr>
 								<tr>
 									<th>면적</th>
-									<td>${cmp1.area}</td>
+									<td>${source.area}</td>
 								</tr>
 								<tr>
 									<th>층</th>
-									<td>${cmp1.floor}</td>
+									<td>${source.floor}</td>
 								</tr>
 							</table>
 						</div>
 					</div>
 
 					<div class="right">
-						<c:if test="${empty cmp2 }">
+						<c:if test="${empty target }">
 							<div>
 								<h5>-</h5>
 								<br>
@@ -249,30 +249,30 @@
 								</table>
 							</div>
 						</c:if>
-						<c:if test="${not empty cmp2 }">
+						<c:if test="${not empty target }">
 							<div>
-								<h5>${cmp2.aptName}</h5>
+								<h5>${target.aptName}</h5>
 								<br>
 								<table class="table">
 									<tr>
 										<th>법정동</th>
-										<td>${cmp2.dong}</td>
+										<td>${target.dong}</td>
 									</tr>
 									<tr>
 										<th>거래 금액</th>
-										<td>${cmp2.dealAmount}만원</td>
+										<td>${target.dealAmount}만원</td>
 									</tr>
 									<tr>
 										<th>건축 년도</th>
-										<td>${cmp2.buildYear}</td>
+										<td>${target.buildYear}</td>
 									</tr>
 									<tr>
 										<th>면적</th>
-										<td>${cmp2.area}</td>
+										<td>${target.area}</td>
 									</tr>
 									<tr>
 										<th>층</th>
-										<td>${cmp2.floor}</td>
+										<td>${target.floor}</td>
 									</tr>
 								</table>
 							</div>

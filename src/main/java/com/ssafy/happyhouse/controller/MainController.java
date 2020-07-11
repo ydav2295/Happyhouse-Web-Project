@@ -29,27 +29,24 @@ public class MainController {
 	MemberService memberService;
 	
 	@GetMapping("resetCompare")
-	   public String resetCompare(HttpSession session)
-	   {
-	      session.removeAttribute("cmp1");
-	      session.removeAttribute("cmp2");
-	      return "redirect:/list";
-	   }
-	   @GetMapping("compare")
-	   public String compare(HttpSession session, int no)
-	   {
-	      if(session.getAttribute("cmp1") == null)
-	         session.setAttribute("cmp1", houseService.search(no));
-	      else
-	         session.setAttribute("cmp2", houseService.search(no));
-	      return "redirect:/list";
-	   }
+	public String resetCompare(HttpSession session) {
+	   session.removeAttribute("source");
+	   session.removeAttribute("target");
+	   return "redirect:/list";
+	}
 	
-	
+	@GetMapping("compare")
+	public String compare(HttpSession session, int no) {
+	   if(session.getAttribute("source") == null)
+	      session.setAttribute("source", houseService.search(no));
+	   else
+	      session.setAttribute("target", houseService.search(no));
+	   return "redirect:/list";
+	}
 	
 	
 	@PostMapping("noticelist")
-	private String notice2(String searchType, String searchWord, Model model) {
+	private String noticePost(String searchType, String searchWord, Model model) {
 		searchType = searchType == null? "all" : searchType;
 		NoticeBean bean = new NoticeBean();
 		bean.setSearchType(searchType);
@@ -66,60 +63,57 @@ public class MainController {
 		
 		return "noticelist";
 	}
+	
 	@GetMapping("noticedetail")
 	private String noticeDetail(Model model, int no) {
 		Notice notice = houseService.noticeDetail(no);
 		model.addAttribute("notice", notice);
 		return "noticedetail";
 	}
+	
 	@GetMapping("writeNotice")
 	public void writeNotice() {}
+	
 	@PostMapping("insertNotice")
 	private String insertNotice(Notice notice) {
-	
 		houseService.insertNotice(notice);
 		return "redirect:/noticelist";
 	}
+	
 	@GetMapping("modifyNotice")
 	public void modifyNotice(int no, Model model) {
 		model.addAttribute("notice", houseService.noticeDetail(no));
 	}
+	
 	@PostMapping("updateNotice")
 	private String updateNotice(Notice notice) {
 	
 		houseService.updateNotice(notice);
 		return "redirect:/noticelist";
 	}
+	
 	@GetMapping("deleteNotice")
 	public String deleteNotice(int no) {
 		houseService.deleteNotice(no);
 		return "redirect:/noticelist";
 	}
-	
-	///////
-	
-	
+		
 	@GetMapping("main")
 	public void main() {}
 	@GetMapping("qnaindex")
 	public void qna(Model model, HttpSession session) {
 		model.addAttribute("loginMember", session.getAttribute("loginMember"));
 	}
-//	@GetMapping("noticedetail")
-//	private String noticeDetail(Model model, int no) {
-//		Notice notice = houseService.noticeDetail(no);
-//		model.addAttribute("notice", notice);
-//		return "noticedetail";
-//	}
+
 	@GetMapping("noticelist")
-	private String notice(Model model) {
+	private String noticeGet(Model model) {
 		List<Notice> noticeList = houseService.searchNotice();
 		model.addAttribute("noticeList", noticeList);
 		
 		return "noticelist";
 	}
 	@PostMapping("list")
-	private String list2(String searchType,String searchWord,String sortType,String pageNo,Model model) throws SQLException {
+	private String listPost(String searchType,String searchWord,String sortType,String pageNo,Model model) throws SQLException {
 		System.out.println("호출됨");
 		searchType = searchType == null ? "all" : searchType;
 		HousePageBean bean = new HousePageBean();
@@ -170,7 +164,7 @@ public class MainController {
 	}
 	
 	@GetMapping("list")
-	private String list(String searchType,String searchWord,String sortType,String pageNo,Model model) throws SQLException {
+	private String listGet(String searchType,String searchWord,String sortType,String pageNo,Model model) throws SQLException {
 		searchType = searchType == null ? "all" : searchType;
 		sortType = sortType == null ? "none" : sortType;
 		HousePageBean bean = new HousePageBean();

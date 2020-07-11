@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mappers/gueset.xml -->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.happyhouse.model.dao.InterestedOptDAO"> <!-- mybatis는 namespace필수!! -->
+   <select id="selectInterestedOptByID" parameterType="String" resultType="interestedOpt">
+   		select 
+   			*  
+		from 
+			interested_opt 
+		where 
+			1=1
+			and id=#{id};
+   </select>
+   
+   <delete id="deleteInterestedOpt" parameterType="String">
+   		delete from
+			interested_opt
+		where
+			id=#{id};
+   </delete>
+   
+   <update id="updateInterestedOpt" parameterType="interestedOpt">
+   		update 
+   			interested_opt
+		set 
+			sido = #{sido}, 
+			gugun = #{gugun}, 
+		    dong = #{dong} 
+			<if test="price != null">
+				,price = #{price} 
+			</if>
+			<if test="space != null">
+				,space = #{space} 
+			</if>
+			<if test="floor != null">
+				,floor = #{floor} 
+			</if>
+		where
+			id = #{id};
+   </update>
+   
+   <insert id="insertInterestedOpt" parameterType="interestedOpt">
+   		insert 
+  			into interested_opt(
+  			id,
+  			sido,
+  			gugun,
+  			dong
+ 			<if test="price != null">
+ 				,price
+ 			</if>
+ 			<if test="space != null">
+ 				,space
+ 			</if>
+ 			<if test="floor != null">
+ 				,floor
+ 			</if>
+  		)values(
+	  		#{id},
+	  		#{sido},
+	  		#{gugun},
+	  		#{dong}
+			<if test="price != null">
+  				,#{price}
+  			</if>
+  			<if test="space != null">
+  				,#{space}
+  			</if>
+  			<if test="floor != null">
+  				,#{floor}
+  			</if>
+  		);
+   </insert>
+
+</mapper>    
+    
+    
+    
+    
+    
+    

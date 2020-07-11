@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mappers/gueset.xml -->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.happyhouse.model.dao.SelectBoxDAO"> <!-- mybatis는 namespace필수!! -->
+   <select id="selectSido" resultType="SidoCodeDTO">
+   		SELECT 
+   			left(sido_code,2) sido_code, 
+   			sido_name FROM ssafydb.sidocode 
+   		ORDER BY 
+   			sido_code
+   </select>
+   <select id="selectGugun" resultType="SidoCodeDTO" parameterType="String">
+   		SELECT 
+   			left(gugun_code,5) gugun_code, 
+   			gugun_name FROM ssafydb.guguncode
+  		where 
+  			left(gugun_code,2) = #{sido}
+  		ORDER BY 
+  			gugun_code
+   </select>
+   <select id="selectDong" resultType="HouseInfo" parameterType="String">
+   		SELECT 
+   			distinct dong, 
+   			code FROM ssafydb.houseinfo 
+   		where 
+   			code = #{gugun} 
+   		ORDER BY 
+   			dong
+   </select>
+   <select id="selectApt" resultType="HouseInfo" parameterType="String">
+   		SELECT 
+   			no,
+   			dong,
+   			AptName,
+   			code,
+   			jibun 
+   		FROM 
+   			ssafydb.houseinfo
+   		WHERE 
+   			dong = #{dong} 
+   
+   </select>
+   
+   <select id="selectAptByBean" resultType="HouseInfo" parameterType="houseInfoBean">
+   		SELECT 
+   			no,
+   			dong,
+   			AptName,
+   			code,
+   			jibun,
+   			buildYear,
+   			lat,
+   			lng
+   		FROM 
+   			ssafydb.houseinfo
+   		WHERE 
+   			1=1
+   			
+   			and 
+   				AptName=#{AptName}
+   			and
+   				jibun=#{jibun}
+   </select>
+   
+</mapper>    
+    
+    
+    
+    
+    
+    

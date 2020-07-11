@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mappers/gueset.xml -->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.happyhouse.model.dao.MemberDAO"> <!-- mybatis는 namespace필수!! -->
+   <insert id="insertMember" parameterType="Member">
+   		insert into member(
+   			id, 
+   			password, 
+   			name, 
+   			address, 
+   			phone, 
+   			zipcode
+   		)values (
+   			#{id}, 
+   			#{password}, 
+   			#{name}, 
+   			#{address}, 
+   			#{phone}, 
+   			11000
+   		)
+   </insert>
+   <select id="searchById" resultType="Member" parameterType="Member">
+   		select 
+   			*
+   		from 
+   			member
+   		where 
+   			id = #{id}
+   </select>
+   <select id="login" resultType="Member" parameterType="Member">
+   		select
+			* 
+		from 
+			member 
+		where 
+			id = #{id} and password = #{password}
+   </select>
+   <update id="updateMember" parameterType="Member">
+   		update 
+   			member 
+   		set 
+   			password = #{password}, 
+   			name = #{name}, 
+   			phone = #{phone}, 
+   			address = #{address} 
+   		where 
+   			id = #{id}
+   </update>
+   <delete id="deleteMember" parameterType="String">
+   		delete from 
+   			member
+   		where 
+   			id = #{id}
+   </delete>
+   <select id="searchPwd" parameterType="Member" resultType="Member">
+   		select
+   			*
+   		from 
+   			member 
+   		where 
+   			id = #{id} 
+   			and name = #{name} 
+   			and phone= #{phone}
+   </select>
+   
+   
+</mapper>    
+    
+    
+    
+    
+    
+    
