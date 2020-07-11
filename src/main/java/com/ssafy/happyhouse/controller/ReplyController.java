@@ -24,6 +24,7 @@ import com.ssafy.happyhouse.model.service.ReplyBoardService;
 public class ReplyController {
 	private static final String SUCCESS = "success";
 	private static final String FAIL = "fail";
+	
 	@Autowired
 	private ReplyBoardService replyBoardService;
 
@@ -31,10 +32,12 @@ public class ReplyController {
 	public ResponseEntity<List<ReplyBoard>> retrieveReply(@PathVariable int qnaNo) throws Exception {
 		return new ResponseEntity<List<ReplyBoard>>(replyBoardService.retrieveReplyBoardByQnANo(qnaNo), HttpStatus.OK);
 	}
+	
 	@GetMapping("/detail/{replyNo}")
 	public ResponseEntity<ReplyBoard> retrieveReplyByReplyNo(@PathVariable int replyNo) throws Exception {
 		return new ResponseEntity<ReplyBoard>(replyBoardService.retrieveReplyBoardByReplyNo(replyNo), HttpStatus.OK);
 	}
+	
 	@PostMapping
 	public ResponseEntity<String> writeReply(ReplyBoard replyBoard) {
 		if (replyBoardService.writeReplyBoard(replyBoard)) {
@@ -42,6 +45,7 @@ public class ReplyController {
 		}
 		return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
 	}
+	
 	@PutMapping
 	public ResponseEntity<String> updateReply(ReplyBoard replyBoard) {
 
@@ -50,6 +54,7 @@ public class ReplyController {
 		}
 		return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
 	}
+	
 	@DeleteMapping("{replyNo}")
 	public ResponseEntity<String> deleteReply(@PathVariable int replyNo) {
 		if (replyBoardService.deleteReplyBoard(replyNo)) {

@@ -11,6 +11,7 @@ import com.ssafy.happyhouse.model.dto.FavList;
 public class FavListServiceImpl implements FavListService {
 	@Autowired
 	FavListDAO favListDao;
+	
 	@Override
 	public boolean insertFavList(FavList favList) {
 		// TODO Auto-generated method stub

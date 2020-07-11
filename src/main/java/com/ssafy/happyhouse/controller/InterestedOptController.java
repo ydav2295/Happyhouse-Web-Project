@@ -39,6 +39,7 @@ public class InterestedOptController {
 		System.out.println("id: " + id);
 		return new ResponseEntity<>(interestedOptService.retrieveInterestedOptByID(id),HttpStatus.OK);
 	}
+	
 	@PostMapping
 	public ResponseEntity<String> optInsert(InterestedOpt interestedOpt){
 		System.out.println("IntOptController - optInsert 호출");
@@ -48,6 +49,7 @@ public class InterestedOptController {
    		}
    		return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
 	}
+	
 	@PutMapping
 	public ResponseEntity<String> optUpdate(InterestedOpt interestedOpt){
 		System.out.println("IntOptController - optUpdate 호출");
@@ -57,6 +59,7 @@ public class InterestedOptController {
    		}
    		return new ResponseEntity<String>(FAIL, HttpStatus.NO_CONTENT);
 	}
+	
 	@DeleteMapping
 	public ResponseEntity<String> deleteBoard(String id) {
 		System.out.println("IntOptController - deleteBoard 호출");
@@ -105,7 +108,6 @@ public class InterestedOptController {
 			}
 			data.add(houseDeal);
 		}
-		
 
 		return new ResponseEntity<>(data,HttpStatus.OK);
 	}

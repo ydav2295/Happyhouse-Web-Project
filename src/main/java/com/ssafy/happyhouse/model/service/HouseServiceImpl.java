@@ -21,6 +21,7 @@ public class HouseServiceImpl implements HouseService{
 	 * @param bean  검색 조건과 검색 단어가 있는 객체
 	 * @return 조회한 식품 목록
 	 */
+	@Override
 	public List<HouseDeal> searchAll(HousePageBean  bean){
 		return dao.searchAll(bean);
 	}
@@ -30,6 +31,7 @@ public class HouseServiceImpl implements HouseService{
 	 * @param no	검색할 아파트 식별 번호
 	 * @return		아파트 식별 번호에 해당하는 아파트 거래 정보를 찾아서 리턴한다, 없으면 null이 리턴됨
 	 */
+	@Override
 	public HouseDeal search(int no) {
 		HouseDeal deal = dao.search(no);
 		if(deal == null) {
@@ -37,14 +39,17 @@ public class HouseServiceImpl implements HouseService{
 		}
 		return deal;
 	}
+	
 	@Override
 	public List<Notice> searchNotice() {
 		return dao.searchNotice();
 	}
+	
 	@Override
 	public Notice noticeDetail(int no) {
 		return dao.searchNoticeByNo(no);
 	}
+	
 	@Override
 	public List<HouseDeal> search(HouseDeal houseDeal) {
 		System.out.println("dao 호출됨");
@@ -63,15 +68,13 @@ public class HouseServiceImpl implements HouseService{
 		return dao.getSize(bean);
 	}
 	
-	
-	
-	//////
 	@Override
 	public void insertNotice(Notice notice) {
 		// TODO Auto-generated method stub
 		dao.insertNotice(notice);
 		
 	}
+	
 	@Override
 	public void updateNotice(Notice notice) {
 		// TODO Auto-generated method stub
@@ -85,12 +88,11 @@ public class HouseServiceImpl implements HouseService{
 		dao.deleteNotice(no);
 		
 	}
+	
 	@Override
 	public List<Notice> searchNotice(NoticeBean bean) {
 		// TODO Auto-generated method stub
 		return dao.searchNotice(bean);
 	}
-	
-	
 	
 }

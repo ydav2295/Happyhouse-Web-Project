@@ -15,10 +15,6 @@ public class SelectBoxServiceImpl implements SelectBoxService {
 	@Autowired
 	private SelectBoxDAO dao;
 
-	public SelectBoxServiceImpl() {
-		dao = new SelectBoxDAOImpl();
-	}
-
 	@Override
 	public List<SidoCodeDTO> selectSido() {
 		List<SidoCodeDTO> list = dao.selectSido();

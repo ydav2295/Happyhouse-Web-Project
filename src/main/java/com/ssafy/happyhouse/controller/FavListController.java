@@ -23,8 +23,10 @@ public class FavListController {
 	private static final String FAIL = "fail";
 	@Autowired
 	private FavListService favListService;
+	
 	@Autowired
 	private HouseService houseService;
+	
 	@GetMapping("/housedeal")
 	public ResponseEntity<HouseDeal>selectHouseDealByNo(int no){
 		System.out.println("FavListController - selectHouseDealByNo 호출");
@@ -38,6 +40,7 @@ public class FavListController {
 		System.out.println("id: " + id);
 		return new ResponseEntity<>(favListService.retrieveFavListById(id),HttpStatus.OK);
 	}
+	
 	@PostMapping
 	public ResponseEntity<String>insertFavList(FavList favList){
 		System.out.println("FavListController - insertFavList 호출");
@@ -48,6 +51,7 @@ public class FavListController {
 		return new ResponseEntity<>(FAIL,HttpStatus.NO_CONTENT);
 		
 	}
+	
 	@DeleteMapping
 	public ResponseEntity<String>deleteFavList(int favNo){
 		System.out.println("FavListController - deleteFavList 호출");

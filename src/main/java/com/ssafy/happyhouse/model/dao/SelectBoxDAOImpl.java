@@ -12,8 +12,10 @@ import com.ssafy.happyhouse.model.dto.SidoCodeDTO;
 @Repository
 public class SelectBoxDAOImpl implements SelectBoxDAO {
 	private final static String NS = "com.ssafy.happyhouse.model.dao.SelectBoxDAO.";
+	
 	@Autowired
 	SqlSession sqlSession;
+	
 	@Override
 	public List<SidoCodeDTO> selectSido(){
 		return sqlSession.selectList(NS+"selectSido");	

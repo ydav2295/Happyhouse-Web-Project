@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.ssafy.happyhouse.model.dao.MemberDAO;
 import com.ssafy.happyhouse.model.dto.Member;
+
 @Service
 public class MemberServiceImpl implements MemberService {
 	@Autowired
@@ -34,10 +35,12 @@ public class MemberServiceImpl implements MemberService {
 		dao.deleteMember(id);
 		
 	}
+	
 	@Override
 	public Member searchPwd(Member member) {
 		return dao.searchPwd(member);
 	}
+	
 	@Override
 	public Member searchById(Member member) {
 		return dao.searchById(member);

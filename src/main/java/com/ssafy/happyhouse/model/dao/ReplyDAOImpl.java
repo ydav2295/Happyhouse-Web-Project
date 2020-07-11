@@ -10,8 +10,10 @@ import com.ssafy.happyhouse.model.dto.ReplyBoard;
 @Repository
 public class ReplyDAOImpl implements ReplyDAO {
 	private final static String NS = "com.ssafy.happyhouse.model.dao.ReplyDAO.";
+	
 	@Autowired
 	SqlSession sqlsession;
+	
 	@Override
 	public List<ReplyBoard> selectReplyBoardByQnANo(int qnaNo) {
 		return sqlsession.selectList(NS+"selectReplyBoardByQnANo",qnaNo);

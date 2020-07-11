@@ -35,6 +35,7 @@ public class QnAController {
 		
 		return new ResponseEntity<List<QnA>>(qnaService.retrieveQnA(), HttpStatus.OK);
 	}
+	
 	@GetMapping("/bean")
 	public ResponseEntity<List<QnA>> retrieveBoardByBean(QnABean qnABean) throws Exception {
 		System.out.println(qnABean);

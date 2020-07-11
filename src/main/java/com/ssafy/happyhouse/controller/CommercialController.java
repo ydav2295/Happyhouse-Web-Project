@@ -24,12 +24,14 @@ public class CommercialController {
 	public ResponseEntity<List<Commercial>>selectCommercialAll(){
 		return new ResponseEntity<>(commercialService.retrieveCommercial(),HttpStatus.OK);
 	}
+	
 	@GetMapping("/bean")
 	public ResponseEntity<List<Commercial>>selectCommercialByBean(CommercialBean commercialBean){
 		commercialBean.setDong(commercialBean.getDong().trim());
 		System.out.println("상권-bean"+commercialBean);
 		return new ResponseEntity<>(commercialService.retrieveCommercialByBean(commercialBean),HttpStatus.OK);
 	}
+	
 	@GetMapping("/codename")
 	public ResponseEntity<List<String>>selectCodeName(){
 		return new ResponseEntity<>(commercialService.retrieveCodeName(),HttpStatus.OK);

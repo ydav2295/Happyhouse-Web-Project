@@ -8,8 +8,10 @@ import com.ssafy.happyhouse.model.dto.Member;
 @Repository
 public class MemberDAOImpl implements MemberDAO {
 	private final static String NS = "com.ssafy.happyhouse.model.dao.MemberDAO.";
+	
 	@Autowired
 	SqlSession sqlsession;
+	
 	@Override
 	public boolean insertMember(Member m) {
 		if(sqlsession.insert(NS+"insertMember",m) == 0){
@@ -17,10 +19,12 @@ public class MemberDAOImpl implements MemberDAO {
 		}
 		return true;
 	}
+	
 	@Override
 	public Member searchById(Member member) {
 		return sqlsession.selectOne(NS+"searchById",member);
 	}
+	
 	@Override
 	public Member login(Member m) {
 		return sqlsession.selectOne(NS+"login",m);
@@ -42,6 +46,4 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlsession.selectOne(NS+"searchPwd",member);
 	}
 	
-	
-
 }

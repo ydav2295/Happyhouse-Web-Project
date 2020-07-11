@@ -5,10 +5,12 @@ import org.springframework.stereotype.Service;
 
 import com.ssafy.happyhouse.model.dao.InterestedOptDAO;
 import com.ssafy.happyhouse.model.dto.InterestedOpt;
+
 @Service
 public class InterestedOptServiceImpl implements InterestedOptService {
 	@Autowired
 	private InterestedOptDAO interestedOptDao;
+	
 	@Override
 	public boolean insertInterestedOpt(InterestedOpt interestedOpt) {
 		// TODO Auto-generated method stub

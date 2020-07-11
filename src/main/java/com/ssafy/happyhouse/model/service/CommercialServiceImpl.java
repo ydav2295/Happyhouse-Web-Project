@@ -12,6 +12,7 @@ import com.ssafy.happyhouse.model.dto.CommercialBean;
 public class CommercialServiceImpl implements CommercialService {
 	@Autowired
 	CommercialDAO commercialDao;
+	
 	@Override
 	public List<Commercial> retrieveCommercial() {
 		// TODO Auto-generated method stub

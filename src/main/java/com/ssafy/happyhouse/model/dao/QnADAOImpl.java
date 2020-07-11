@@ -11,8 +11,10 @@ import com.ssafy.happyhouse.model.dto.QnABean;
 @Repository
 public class QnADAOImpl implements QnADAO {
 	private final static String NS = "com.ssafy.happyhouse.model.dao.QnADAO.";
+	
 	@Autowired
 	SqlSession sqlsession;
+	
 	@Override
 	public List<QnA> selectQnA() {
 		return sqlsession.selectList(NS+"selectQnA");

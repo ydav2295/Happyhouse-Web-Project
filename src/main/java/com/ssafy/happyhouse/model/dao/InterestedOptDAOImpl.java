@@ -8,8 +8,10 @@ import com.ssafy.happyhouse.model.dto.InterestedOpt;
 @Repository
 public class InterestedOptDAOImpl implements InterestedOptDAO {
 	private final static String NS = "com.ssafy.happyhouse.model.dao.InterestedOptDAO.";
+	
 	@Autowired
 	SqlSession sqlsession;
+	
 	@Override
 	public boolean insertInterestedOpt(InterestedOpt interestedOpt) {
 		System.out.println("daoInsert : "+ interestedOpt);
