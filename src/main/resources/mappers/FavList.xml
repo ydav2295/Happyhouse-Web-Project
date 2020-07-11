@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mappers/gueset.xml -->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.happyhouse.model.dao.FavListDAO"> <!-- mybatis는 namespace필수!! -->
+   <select id="searchFavListById" parameterType="String" resultType="FavList">
+   		select 
+   			fv_no as fvNo,
+   			no as no,
+   			id as id
+		from 
+			fav_list 
+		where 
+			1=1
+			and id=#{id};
+   </select>
+   
+
+   
+   <delete id="deleteFavList" parameterType="int">
+   		delete from
+			fav_list
+		where
+			fv_no=#{fvNo};
+   </delete>
+   
+   <delete id="deleteFavListByNo" parameterType="int">
+   		delete from
+			fav_list
+		where
+			no=#{no};
+   </delete>
+   
+   <insert id="insertFavList" parameterType="favList">
+   		insert 
+  			into fav_list(
+  			no,
+  			id
+  		)values(
+	  		#{no},
+	  		#{id}
+  		);
+   </insert>
+
+</mapper>    
+    
+    
+    
+    
+    
+    

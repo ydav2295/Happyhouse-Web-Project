@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- mappers/gueset.xml -->
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.happyhouse.model.dao.CommercialDAO"> <!-- mybatis는 namespace필수!! -->
+   <select id="searchCommercial" resultType="Commercial">
+   		select
+   			 *
+		from
+			 commercial
+   </select>
+   <select id="searchCommercialByCN1" resultType="Commercial" parameterType="CommercialBean">
+   		select
+   			 *
+		from 
+			commercial
+		where 1=1
+   		  	<if test="dong != null">
+   				and dong like CONCAT('%',#{dong},'%') 
+   		  	</if>
+   		  	<if test="codename1 != null">
+   				and codename1 like CONCAT('%',#{codename1},'%') 
+   		  	</if>
+   </select>
+   
+   <select id="searchCodeName" resultType="string">
+   		select 
+   			distinct codename1 
+   		from 
+   			commercial
+   </select>
+   
+</mapper>    
+    
+    
+    
+    
+    
+    
