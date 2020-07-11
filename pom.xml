@@ -9,11 +9,11 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ssafy</groupId>
-	<artifactId>HappyHouse_Web_Front_Gumi_3ban_NoWooHyun_JiMinWoo</artifactId>
+	<artifactId>HappyHouse_Web_Project</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>HappyHouse_Web_Front_Gumi_3ban_NoWooHyun_JiMinWoo</name>
-	<description>HappyHouse_Web_Front_Gumi_3ban_NoWooHyun_JiMinWoo</description>
+	<name>HappyHouse_Web_Project</name>
+	<description>HappyHouse_Web_Project</description>
 
 	<properties>
 		<java.version>1.8</java.version>
