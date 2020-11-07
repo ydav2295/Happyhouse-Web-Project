@@ -13,3 +13,5 @@ https://github.com/ydav2295/Happyhouse-Web-Project
 ## Tech Stack in this project
 - Java Spring / Spring boot
 - RESTful API
+- MySQL
+- MyBatis
